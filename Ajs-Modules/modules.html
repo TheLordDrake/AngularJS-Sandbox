@@ -1,0 +1,59 @@
+<!--
+    An AngularJS module defines an application.
+
+    The module is a container for the different parts of an application.
+
+    The module is a container for the application controllers.
+
+    Controllers always belong to a module.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="Modules" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="myCtrl">
+            {{ firstName + ' ' + lastName }}
+        </div>
+
+        <!-- Using custom directives -->
+        <div w3-test-directive></div>
+
+        <br />
+        <div>
+            <a href='external.html'>External Scripts</a>
+        </div>
+    </div>
+    <script>
+        var app = angular.module('myApp', []);
+
+        app.controller('myCtrl', function($scope)
+        {
+            $scope.firstName = 'John';
+            $scope.lastName = 'Doe';
+        })
+
+        app.directive('w3TestDirective', function()
+        {
+            var directive =
+            {
+                template : 'I was made in a directive constructor!'
+            };
+            return directive;
+
+            // This returns undefined, return is odd and doesn't look at the next line https://stackoverflow.com/a/29546271/5924307
+            // return 
+            // {
+            //     template : 'I was made in a directive constructor!'
+            // };
+        })
+    </script>
+</body>
+</html>
