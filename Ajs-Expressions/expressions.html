@@ -1,0 +1,78 @@
+<!--
+    AngularJS expressions can be written inside double braces: {{ expression }}.
+
+    AngularJS expressions can also be written inside a directive: ng-bind="expression".
+
+    AngularJS will resolve the expression, and return the result exactly where the expression is written.
+
+    AngularJS expressions are much like JavaScript expressions: They can contain literals, operators, and variables.
+
+    Example {{ 5 + 5 }} or {{ firstName + " " + lastName }}
+
+    -----
+
+    AngularJS Expressions vs. JavaScript Expressions
+    Like JavaScript expressions, AngularJS expressions can contain literals, operators, and variables.
+
+    Unlike JavaScript expressions, AngularJS expressions can be written inside HTML.
+
+    AngularJS expressions do not support conditionals, loops, and exceptions, while JavaScript expressions do.
+
+    AngularJS expressions support filters, while JavaScript expressions do not.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Expressions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="../main.css" /> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<!-- Cannot have more than one app binding by default. Maybe possible with bootstrop per https://stackoverflow.com/a/18583329/5924307-->
+<body ng-app="">
+    <!--
+        AngularJS extends HTML with ng-directives.
+
+        The ng-app directive defines an AngularJS application.
+     -->
+    <div>
+        <!-- Angular JS expressions are written inside double braces. -->
+        <p>My first expression in angular is {{ 5 + 5 }}</p>
+    </div>
+    
+    <div ng-init="myCol='lightblue'">
+        <input style="background-color:{{myCol}}" ng-model="myCol">
+    </div>
+
+    <!-- Angular works with numerics the same way JS does -->
+    <div ng-init="quantity = 1; cost = 5">
+        <p>Total in dollars: {{ quantity * cost }}</p>
+    </div>
+
+    <!-- Using ng-bind -->
+    <div ng-init="quantity = 1; cost = 5">
+        <p>Total in dollars: <span ng-bind="quantity * cost"></span></p>
+    </div>
+
+    <!-- Using strings is the same as JS -->
+    <div ng-init="firstName = 'John'; lastName = 'Doe'">
+        <p>The name is {{ firstName + ' ' + lastName }}</p>
+        <p>The name is <span ng-bind="firstName + ' ' + lastName"></span></p>
+    </div>
+
+    Using Objects:
+    <div ng-init="person={firstName:'John', lastName:'Doe'}">
+        <p>Thename is {{ person.lastName }}</p>
+        <p>The name is <span ng-bind="person.lastName"></span></p>
+    </div>
+
+    <!-- Angular arrays are just like JS arrays -->
+    <div ng-init="points=[1, 15, 19, 2, 40]">
+        <p>The third result is {{ points[2] }}</p>
+        <p>The third result is <span ng-bind="points[2]"></span></p>
+    </div>
+</body>
+</html>
